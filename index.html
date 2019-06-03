@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Treatwell Tech Graduate Scheme Test</title>
+	<script src="Box.js" type="text/javascript" charset="utf-8"></script>
+	<script src="tests.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<form onsubmit="return false;">
+		<label for="width">Width:</label>
+		<input type="number" min="2" name="width" id="width" value="4">
+
+		<label for="height">Height:</label>
+		<input type="number" min="2" name="height" id="height" value="4">
+
+		<button type="submit" onclick="makeBox();">Submit</button>
+	</form>
+
+	<canvas id="canvas" width="200" height="200"></canvas>
+
+	<script>
+		let box;
+
+		/**
+		* Creates a new box instance whose width and height matches the HTML5 input values.
+		* Draws the box on the canvas and prints it to the console
+		*/
+		function makeBox() {
+			//Get input values
+			w = document.getElementById( 'width' ).value;
+			h = document.getElementById( 'height' ).value;
+
+			//Make new box
+			try {
+				box = new Box( w, h );
+				box.printToConsole();
+				box.drawOnCanvas( document.getElementById( 'canvas' ) );
+			} catch( e ) {
+				alert( e );
+			}
+		}
+
+		//Make box from default input values
+		makeBox();
+
+		//Comment out the line below to run the tests
+		//runTests();
+	</script>
+</body>
+</html>
